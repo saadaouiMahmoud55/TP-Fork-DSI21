@@ -2,46 +2,331 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>TP Fork - DSI21</title>
-  </head>
-  <body>
-    <h1>Bienvenue au TP Fork - DSI21</h1>
-    <p>
-      Ce projet sert à apprendre GitHub : Fork, Commit, Push, Pull Request et
-      Merge.
-    </p>
+    <title>Équipe DSI21 — TP Fork</title>
 
-    <h2>Membres du groupe :</h2>
-    <ul>
-      <li>Saadaoui Mahmoud DSI21</li>
-      <li>Degachi Manar</li>
-      <li>Dridi Islem</li>
-      <li>Werghemi Issra</li>
-      <li>Ben belgacem Eya</li>
-      <li>Bellil Zaineb</li>
-    </ul>
-    <section class="grid-demo">
-      <h2>Équipe TP Fork — 2025/2026</h2>
+    <style>
+      /* --- BASE STYLES --- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(120deg, #89f7fe, #66a6ff);
+        background-size: 200% 200%;
+        animation: gradientMove 12s ease infinite;
+        color: #333;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* --- CONTAINER --- */
+      .container {
+        flex: 1;
+        max-width: 1100px;
+        margin: 60px auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 25px;
+        padding: 50px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        backdrop-filter: blur(10px);
+        animation: fadeInUp 1.5s ease;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* --- TITRE --- */
+      h1 {
+        font-size: 3rem;
+        color: #0078b7;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+        animation: textGlow 2.5s infinite alternate;
+      }
+
+      @keyframes textGlow {
+        from {
+          text-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff;
+        }
+        to {
+          text-shadow: 0 0 20px #00aaff, 0 0 40px #0078b7;
+        }
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 30px;
+        animation: fadeIn 2s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* --- LISTE MEMBRES --- */
+      ul.membres {
+        list-style: none;
+        padding: 0;
+        margin: 30px auto 40px;
+        width: 70%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      ul.membres li {
+        background: #e7f3ff;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+
+      ul.membres li:hover {
+        background: #cfe4ff;
+        transform: translateY(-3px);
+      }
+
+      /* --- GRILLE DES MEMBRES --- */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin-top: 40px;
+      }
+
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .member {
+        background: linear-gradient(145deg, #0078b7, #00a8ff);
+        color: #fff;
+        border-radius: 20px;
+        padding: 25px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 8px 20px rgba(0, 120, 183, 0.3);
+        animation: floatUp 5s ease-in-out infinite;
+      }
+
+      @keyframes floatUp {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      .member:hover {
+        transform: scale(1.07);
+        box-shadow: 0 12px 30px rgba(0, 120, 183, 0.45);
+      }
+
+      .member img {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #fff;
+        margin-bottom: 10px;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .member:hover img {
+        transform: scale(1.15);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+      }
+
+      .member p {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 5px 0 0;
+      }
+
+      /* --- SECTION PROJET --- */
+      .project-section {
+        margin-top: 60px;
+        text-align: left;
+        background: #f8fbff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-section h2 {
+        color: #0078b7;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .project-section p {
+        line-height: 1.7;
+        color: #444;
+        font-size: 1rem;
+      }
+
+      .project-section ul {
+        margin-top: 10px;
+        margin-left: 40px;
+        color: #333;
+      }
+
+      .project-section li {
+        margin-bottom: 8px;
+      }
+
+      /* --- BOUTON --- */
+      button {
+        margin-top: 50px;
+        padding: 14px 35px;
+        font-size: 1.1rem;
+        background: linear-gradient(135deg, #0078b7, #00a8ff);
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 12px rgba(0, 120, 183, 0.4);
+      }
+
+      button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 20px rgba(0, 120, 183, 0.5);
+        background: linear-gradient(135deg, #00a8ff, #0078b7);
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background: linear-gradient(135deg, #0078b7, #00a8ff);
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+        position: relative;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 3px;
+        background: white;
+        border-radius: 2px;
+        animation: glowLine 3s infinite alternate;
+      }
+
+      @keyframes glowLine {
+        from {
+          box-shadow: 0 0 5px #fff;
+        }
+        to {
+          box-shadow: 0 0 20px #fff;
+        }
+      }
+
+      .footer-content {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .footer-content p {
+        margin-top: 15px;
+        font-size: 0.95rem;
+        opacity: 0.9;
+      }
+
+      .socials {
+        margin-top: 10px;
+      }
+
+      .socials a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.4rem;
+        margin: 0 10px;
+        transition: all 0.3s ease;
+      }
+
+      .socials a:hover {
+        color: #ffd166;
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Équipe DSI21</h1>
+      <p class="subtitle">
+        Projet <b>TP Fork</b> — Collaboration, créativité et GitHub 💻✨
+      </p>
+
+      <ul class="membres">
+        <li>Mahmoud Saadaoui</li>
+        <li>Eya Ben Belgacem</li>
+        <li>Manar Dgachi</li>
+        <li>Zayneb Bellil</li>
+        <li>Islem Dridi</li>
+        <li>Issrae Werghemmi</li>
+      </ul>
 
       <div class="grid">
-        <div class="member">
-          <img src="WhatsApp Image 2025-11-12 at 03.06.44.jpeg" alt="Islem" />
-          <p>Islem Dridi</p>
-        </div>
-
-        <div class="member">
-          <img src="WhatsApp Image 2025-11-12 at 02.55.12.jpeg" alt="Eya" />
-          <p>Eya Ben belgacem</p>
-        </div>
-
         <div class="member">
           <img src="WhatsApp Image 2025-11-12 at 03.01.33.jpeg" alt="Mahmoud" />
           <p>Mahmoud Saadaoui</p>
         </div>
 
         <div class="member">
-          <img src="WhatsApp Image 2025-11-12 at 03.04.46.jpeg" alt="Issrae" />
-          <p>Issrae Werghemmi</p>
+          <img src="WhatsApp Image 2025-11-12 at 02.55.12.jpeg" alt="Eya" />
+          <p>Eya Ben Belgacem</p>
         </div>
 
         <div class="member">
@@ -50,68 +335,66 @@
         </div>
 
         <div class="member">
-          <img
-            src="16e5ece4-0457-47e2-a747-0b636786d066.jpeg"
-            alt="Zayneb Bellil"
-          />
+          <img src="WhatsApp Image 2025-11-12 at 03.06.44.jpeg" alt="Islem" />
+          <p>Islem Dridi</p>
+        </div>
+
+        <div class="member">
+          <img src="16e5ece4-0457-47e2-a747-0b636786d066.jpeg" alt="Zayneb" />
           <p>Zayneb Bellil</p>
         </div>
+
+        <div class="member">
+          <img src="WhatsApp Image 2025-11-12 at 03.04.46.jpeg" alt="Issrae" />
+          <p>Issrae Werghemmi</p>
+        </div>
       </div>
-    </section>
 
-    <style>
-      .grid-demo {
-        max-width: 900px;
-        margin: 40px auto;
-        font-family: sans-serif;
-        text-align: center;
-      }
+      <!-- ✅ NEW PROJECT INFO SECTION -->
+      <div class="project-section">
+        <h2>À propos du projet — TP Fork 🌍</h2>
+        <p>
+          Ce projet a été réalisé dans le cadre du <b>TP Git & GitHub</b>.  
+          L’objectif principal était d’apprendre à collaborer efficacement sur un même projet à l’aide des commandes Git et des fonctionnalités offertes par GitHub.
+        </p>
+        <p>Voici un aperçu des étapes et outils utilisés :</p>
+        <ul>
+          <li>Création d’un dépôt principal sur GitHub (repository).</li>
+          <li>Réalisation d’un <b>fork</b> du projet pour chaque membre de l’équipe.</li>
+          <li>Utilisation des commandes Git : <code>clone</code>, <code>add</code>, <code>commit</code>, <code>push</code>, et <code>pull</code>.</li>
+          <li>Création et fusion des branches (<code>branch</code>, <code>checkout</code>, <code>merge</code>).</li>
+          <li>Gestion des contributions via des <b>pull requests</b>.</li>
+          <li>Résolution de conflits et synchronisation avec le dépôt d’origine.</li>
+        </ul>
+        <p>
+          Ce TP nous a permis de comprendre la logique du travail collaboratif, de mieux utiliser GitHub et de renforcer la communication au sein de l’équipe 💪.
+        </p>
+      </div>
 
-      .grid-demo h2 {
-        color: #0ea5a4;
-        margin-bottom: 25px;
-      }
+      <button onclick="afficherMessage()">Joignez notre aventure!💙</button>
+    </div>
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 20px;
-      }
+    <footer>
+      <div class="footer-content">
+        <div class="socials">
+          <a href="#"><i>🌐</i></a>
+          <a href="#"><i>💻</i></a>
+          <a href="#"><i>📸</i></a>
+        </div>
+        <p>
+          Projet réalisé avec ❤️ par <b>Équipe DSI21</b> — Année Universitaire
+          2025/2026
+        </p>
+        <p>&copy; Tous droits réservés | DSI21 - ISET TOZEUR</p>
+      </div>
+    </footer>
 
-      .member {
-        background: #0ea5a4;
-        color: #fff;
-        border-radius: 12px;
-        padding: 15px;
-        transition: transform 0.2s;
-      }
-
-      .member img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 8px;
-        border: 2px solid #fff;
-      }
-
-      .member:hover {
-        transform: scale(1.05);
-        background: #0c8f8d;
-      }
-
-      .member p {
-        margin: 0;
-        font-weight: bold;
-        font-size: 1rem;
-      }
-    </style>
     <script>
       function afficherMessage() {
-        alert('Bouton cliqué !')
+        alert(
+          'Merci d’avoir visité la page de notre équipe DSI21 🌟\nCollaboration = Réussite !'
+        )
       }
     </script>
-
-    <button onclick="afficherMessage()">Clique-moi</button>
   </body>
 </html>
